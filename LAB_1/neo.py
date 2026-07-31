@@ -1,11 +1,14 @@
 import os
 import sys
 import time
-import random
 import threading
 
 import keyboard
 import pyautogui
+
+# Speed optimizations
+pyautogui.PAUSE = 0
+pyautogui.FAILSAFE = False
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -30,30 +33,40 @@ def type_text(text, label):
 
     typing = True
     stop_requested = False
+
     print(f"Typing {label} starts in 3 seconds...")
     time.sleep(3)
 
-    for ch in text:
-        if stop_requested:
-            break
-        if ch == "\n":
-            pyautogui.press("enter")
-        else:
-            pyautogui.write(ch)
-        time.sleep(random.uniform(0.0005, 0.002))
+    if stop_requested:
+        typing = False
+        return
+
+    try:
+        # Extremely fast typing
+        keyboard.write(text, delay=0)
+
+    except Exception as e:
+        print("Error:", e)
 
     typing = False
+
     if stop_requested:
         print(f"{label} stopped.")
     else:
         print(f"{label} done.")
+
 
 def start_program(text, label):
     if typing:
         print(f"{label} is already running. Press Shift+S to stop it.")
         return
 
-    threading.Thread(target=type_text, args=(text, label), daemon=True).start()
+    threading.Thread(
+        target=type_text,
+        args=(text, label),
+        daemon=True
+    ).start()
+
     print(f"{label} started. Press Shift+S to stop.")
 
 
@@ -82,20 +95,21 @@ def stop_typing():
 
     if typing:
         stop_requested = True
+        keyboard.release('shift')
         print("Stopping current typing...")
     else:
         print("Nothing is being typed right now.")
 
 
 def exit_program():
-    if typing:
-        stop_requested = True
-        print("Stopping typing and exiting...")
-    else:
-        print("Exiting...")
+    global stop_requested
+
+    stop_requested = True
+
+    print("Exiting...")
 
     keyboard.unhook_all_hotkeys()
-    sys.exit(0)
+    os._exit(0)
 
 
 keyboard.add_hotkey("shift+1", start_program1, suppress=True)
