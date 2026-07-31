@@ -1,0 +1,43 @@
+int MR = sc.nextInt(), MC = sc.nextInt();
+int[][] b = new int[MR][MC];
+
+for(int i=0;i<MR;i++)
+for(int j=0;j<MC;j++)
+b[i][j]=sc.nextInt();
+
+int mergeType=sc.nextInt();
+
+System.out.println("Transformed matrix:");
+for(int i=0;i<R;i++){
+int sum=0;
+for(int j=0;j<C;j++)
+sum+=libraryMatrix[i][j];
+for(int j=0;j<C;j++){
+libraryMatrix[i][j]=sum;
+System.out.print(sum+" ");
+}
+System.out.println();
+}
+
+System.out.println("Final merged matrix:");
+if(mergeType==0){
+for(int i=0;i<R;i++){
+for(int j=0;j<C;j++)
+System.out.print(libraryMatrix[i][j]+" ");
+System.out.println();
+}
+for(int i=0;i<MR;i++){
+for(int j=0;j<MC;j++)
+System.out.print(b[i][j]+" ");
+System.out.println();
+}
+}
+else{
+for(int i=0;i<R;i++){
+for(int j=0;j<C;j++)
+System.out.print(libraryMatrix[i][j]+" ");
+for(int j=0;j<MC;j++)
+System.out.print(b[i][j]+" ");
+System.out.println();
+}
+}
