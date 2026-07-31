@@ -51,7 +51,7 @@ def main():
     # Get current branch
     _, branch, _ = run(["git", "rev-parse", "--abbrev-ref", "HEAD"])
 
-    # Push
+    
     print(f"Pushing to origin/{branch} ...")
     run(["git", "push", "origin", branch])
 
