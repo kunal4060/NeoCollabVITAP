@@ -1,0 +1,39 @@
+Single File Programming Question
+Problem Statement:
+
+
+
+In a smart classroom, sound sensors log decibel levels at regular intervals throughout the day. The system must monitor for noise violations by detecting if more than k readings exceed a safe threshold t. If violations exceed k, the system should trigger a warning.
+
+A developer attempted to implement this check, but the code sometimes gives false alarms or misses violations. Your task is to debug the code and ensure correct output.
+
+Input format :
+The first line of input consists of three space-separated integers n, k, and t, representing the number of readings, the allowed number of threshold violations, and the maximum safe decibel level respectively.
+
+The second line of input consists of n space-separated integers, representing the decibel readings.
+
+Output format :
+The output prints "ALERT" if the number of violations is greater than k, otherwise "SAFE".
+
+
+
+Refer to the sample output for formatting specifications.
+
+Code constraints :
+1 ≤ n ≤ 105
+
+0 ≤ k ≤ n
+
+0 ≤ t ≤ 150
+
+0 ≤ reading[i] ≤ 200
+
+Sample test cases :
+Input 1 :
+6 2 100
+95 102 101 99 110 85
+Output 1 :
+ALERT
+Note :
+The program will be evaluated only after the “Submit Code” is clicked.
+Extra spaces and new line characters in the program output will result in the failure of the test case.
