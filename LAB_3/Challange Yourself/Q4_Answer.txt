@@ -1,0 +1,48 @@
+import java.util.Scanner;
+public class Main{
+public static void main(String[] args){
+Scanner sc=new Scanner(System.in);
+if(sc.hasNextInt()){
+int n=sc.nextInt();
+int[][] a=new int[n][n];
+long sum=0;
+for(int i=0;i<n;i++)
+for(int j=0;j<n;j++){
+a[i][j]=sc.nextInt();
+sum+=a[i][j];
+}
+int top=0,bottom=n-1,left=0,right=n-1;
+boolean first=true;
+while(top<=bottom&&left<=right){
+for(int i=left;i<=right;i++){
+if(!first) System.out.print(" ");
+System.out.print(a[top][i]);
+first=false;
+}
+top++;
+for(int i=top;i<=bottom;i++){
+if(!first) System.out.print(" ");
+System.out.print(a[i][right]);
+first=false;
+}
+right--;
+if(top<=bottom)
+for(int i=right;i>=left;i--){
+if(!first) System.out.print(" ");
+System.out.print(a[bottom][i]);
+first=false;
+}
+bottom--;
+if(left<=right)
+for(int i=bottom;i>=top;i--){
+if(!first) System.out.print(" ");
+System.out.print(a[i][left]);
+first=false;
+}
+left++;
+}
+System.out.println();
+System.out.print("Total: "+sum);
+}
+}
+}
