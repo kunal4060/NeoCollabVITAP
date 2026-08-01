@@ -1,0 +1,14 @@
+2
+Pressing the same number again OVERWRITES that file with the new selection.
+Press 3
+2. Run the script. On Windows/Linux, global hotkeys usually need
+   elevated permissions:
+       Windows: run your terminal "as Administrator"
+       Linux:   sudo python3 selection_saver.py
+   (Mac: the 'keyboard' library has limited support; see note at bottom.)
+"""
+
+import os
+import time
+
+import keyboard

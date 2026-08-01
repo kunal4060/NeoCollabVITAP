@@ -1,0 +1,6 @@
+es the currently selected text into its own file:
+    selection_1.txt
+    selection_2.txt
+    selection_3.txt
+    selection_4.txt
+    selection_5.txt
