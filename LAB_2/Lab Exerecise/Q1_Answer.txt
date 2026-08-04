@@ -1,23 +1,27 @@
-import java.util.Scanner;
+// You are using Java
+import java.util.*;
 public class Main{
-public static void main(String[] args){
-Scanner sc=new Scanner(System.in);
-if(!sc.hasNextInt())
-return;
-int n=sc.nextInt();
-int[][] matrix=new int[n][n];
-for(int i=0;i<n;i++)
-for(int j=0;j<n;j++)
-matrix[i][j]=sc.nextInt();
-long mainDiagonalSumOfSquares=0;
-long antiDiagonalSumOfSquares=0;
-for(int i=0;i<n;i++){
-long mainVal=matrix[i][i];
-mainDiagonalSumOfSquares+=mainVal*mainVal;
-long antiVal=matrix[i][n-1-i];
-antiDiagonalSumOfSquares+=antiVal*antiVal;
-}
-System.out.println("Square of the first diagonal: "+mainDiagonalSumOfSquares);
-System.out.println("Square of the second diagonal: "+antiDiagonalSumOfSquares);
-}
+    static int prec(char c){
+        return (c == '+' || c == '-') ? 1 : (c == '*' || c == '/') ? 2 : (c == '^') ? 3 : -1;
+    }
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        StringBuilder res = new StringBuilder();
+        Stack<Character> st = new Stack<>();
+        for(char c : s.toCharArray()){
+            if(Character.isLetterOrDigit(c)) res.append(c);
+            else if(c == '(') st.push(c);
+            else if(c == ')'){
+                while(!st.isEmpty() && st.peek() != '(') res.append(st.pop());
+                st.pop();
+            }
+            else{
+                while(!st.isEmpty() && prec(c) <= prec(st.peek())) res.append(st.pop());
+                st.push(c);
+            }
+        }
+        while(!st.isEmpty()) res.append(st.pop());
+        System.out.println(res);
+    }
 }
