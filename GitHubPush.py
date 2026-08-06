@@ -21,7 +21,7 @@ def run(cmd, check=True):
 
 
 def main():
-    # Make sure we're inside a git repo
+    # Make sure we're inside a git rep
     code, _, _ = run(["git", "rev-parse", "--is-inside-work-tree"], check=False)
     if code != 0:
         print("Error: This folder is not a git repository.")
