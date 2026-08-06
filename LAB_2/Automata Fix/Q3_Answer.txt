@@ -1,0 +1,55 @@
+import java.util.Scanner;
+class Main {
+static char[] stack = new char[25];
+static int top = -1;
+static void push(char ch) {
+stack[++top] = ch;
+}
+static char pop() {
+if (top == -1) return '\0';
+return stack[top--];
+}
+static char peek() {
+if (top == -1) return '\0';
+return stack[top];
+}
+static boolean isEmpty() {
+return top == -1;
+}
+static int precedence(char ch) {
+if (ch == '^') return 3;
+if (ch == '*' || ch == '/') return 2;
+if (ch == '+' || ch == '-') return 1;
+return 0;
+}
+public static void main(String[] args) {
+Scanner sc = new Scanner(System.in);
+if(sc.hasNext()) {
+String expr = sc.next();
+StringBuilder result = new StringBuilder();
+for (int i = 0; i < expr.length(); i++) {
+char ch = expr.charAt(i);
+if (Character.isLetter(ch)) {
+result.append(ch);
+} else if (ch == '(') {
+push(ch);
+} else if (ch == ')') {
+while (!isEmpty() && peek() != '(') {
+result.append(pop());
+}
+pop();
+} else {
+while (!isEmpty() && precedence(ch) <= precedence(peek())) {
+result.append(pop());
+}
+push(ch);
+}
+}
+while (!isEmpty()) {
+result.append(pop());
+}
+System.out.println(result.toString());
+}
+sc.close();
+}
+}

@@ -1,0 +1,55 @@
+import java.util.Scanner;
+class Main {
+static final int MAX_SIZE = 100;
+static int[] stack = new int[MAX_SIZE];
+static int top = -1;
+static boolean isEmpty() {
+return top == -1;
+}
+static boolean isFull() {
+return top == MAX_SIZE - 1;
+}
+static void push(int value) {
+if (isFull()) return;
+stack[++top] = value;
+}
+static int pop() {
+if (isEmpty()) return -1;
+return stack[top--];
+}
+static int peek() {
+if (isEmpty()) return -1;
+return stack[top];
+}
+static int maxSumNonOverlapping(int[] arr, int n, int k) {
+int maxSum = 0;
+top = -1;
+for (int i = 0; i <= n - k; i += k) {
+int sum = 0;
+for (int j = i; j < i + k; j++) {
+sum += arr[j];
+}
+push(sum);
+}
+while (!isEmpty()) {
+if (peek() > maxSum) {
+maxSum = peek();
+}
+pop();
+}
+return maxSum;
+}
+public static void main(String[] args) {
+Scanner sc = new Scanner(System.in);
+if(sc.hasNextInt()) {
+int n = sc.nextInt();
+int[] arr = new int[n];
+for (int i = 0; i < n; i++) {
+arr[i] = sc.nextInt();
+}
+int k = sc.nextInt();
+System.out.println(maxSumNonOverlapping(arr, n, k));
+}
+sc.close();
+}
+}

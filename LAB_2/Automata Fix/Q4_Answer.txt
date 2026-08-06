@@ -1,0 +1,43 @@
+import java.util.Scanner;
+class Main {
+static final int MAX = 20;
+static int[] stack = new int[MAX];
+static int top = -1;
+static void push(int value) {
+stack[++top] = value;
+}
+static int pop() {
+return stack[top--];
+}
+public static void main(String[] args) {
+Scanner sc = new Scanner(System.in);
+if(sc.hasNext()) {
+String expr = sc.next();
+for (int i = 0; i < expr.length(); i++) {
+char ch = expr.charAt(i);
+if (Character.isDigit(ch)) {
+push(ch - '0');
+} else {
+int b = pop();
+int a = pop();
+switch (ch) {
+case '+':
+push(a + b);
+break;
+case '-':
+push(a - b);
+break;
+case '*':
+push(a * b);
+break;
+case '/':
+push(a / b);
+break;
+}
+}
+}
+System.out.println(pop());
+}
+sc.close();
+}
+}
