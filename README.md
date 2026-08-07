@@ -158,6 +158,6 @@ This tool is intended for **educational purposes and personal productivity**. Pl
 
 <div align="center">
 
-**Made with ❤️ by Kunal Ugale**
+**Made with AI ❤️ **
 
 </div>
