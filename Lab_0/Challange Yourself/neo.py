@@ -1,3 +1,5 @@
+# made by kunal ugale with ai but idia was mine
+
 import os
 import sys
 import time
@@ -116,3 +118,5 @@ print("Press Shift+S -> Stop current typing")
 print("Press Shift+Q -> Exit the program")
 
 keyboard.wait()
+
+# made by kunal ugale with ai but idia was mine

@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# made by kunal ugale with ai but idia was mine
+
 """
 gitpush.py - Stage all changes, commit with a message you enter, and push to GitHub
 
@@ -60,3 +62,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# made by kunal ugale with ai but idia was mine
