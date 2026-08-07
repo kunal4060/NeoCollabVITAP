@@ -43,6 +43,14 @@ pip install keyboard pyautogui
 py -m pip install keyboard pyautogui
 ```
 
+**On macOS:**
+
+```bash
+python3 -m pip install keyboard pyautogui
+```
+
+These scripts now work on both **Windows** and **macOS**. On macOS, use **Command** as the alternate modifier key; on Windows, use **Ctrl**.
+
 ---
 
 ## 🗂️ Project Structure
@@ -95,13 +103,13 @@ py Lab_0/neo.py
 
 | Shortcut | Action |
 |:--------:|--------|
-| `Shift + 1` | Type Program 1 |
-| `Shift + 2` | Type Program 2 |
-| `Shift + 3` | Type Program 3 |
-| `Shift + 4` | Type Program 4 |
-| `Shift + 5` | Type Program 5 |
-| `Shift + S` | Stop current typing |
-| `Shift + Q` | Exit the program |
+| `Shift + 1` or `Command/Ctrl + 1` | Type Program 1 |
+| `Shift + 2` or `Command/Ctrl + 2` | Type Program 2 |
+| `Shift + 3` or `Command/Ctrl + 3` | Type Program 3 |
+| `Shift + 4` or `Command/Ctrl + 4` | Type Program 4 |
+| `Shift + 5` or `Command/Ctrl + 5` | Type Program 5 |
+| `Shift + S` or `Command/Ctrl + S` | Stop current typing |
+| `Shift + Q` or `Command/Ctrl + Q` | Exit the program |
 
 ---
 
@@ -125,8 +133,8 @@ py Lab_0/neo.py
 - The program reads answers from `Q1_Answer.txt` through `Q5_Answer.txt`.
 - Ensure the cursor is already placed in the correct text box before starting.
 - **Once typing starts, do not move the mouse or switch windows** — doing so may cause the text to be typed in the wrong location.
-- Stop typing anytime with `Shift + S`.
-- Exit the application with `Shift + Q`.
+- Stop typing anytime with `Shift + S` or `Command/Ctrl + S`.
+- Exit the application with `Shift + Q` or `Command/Ctrl + Q`.
 
 ---
 

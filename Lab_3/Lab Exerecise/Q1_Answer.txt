@@ -1,23 +1,36 @@
 import java.util.Scanner;
-public class Main{
-public static void main(String[] args){
-Scanner sc=new Scanner(System.in);
-if(!sc.hasNextInt())
-return;
-int n=sc.nextInt();
-int[][] matrix=new int[n][n];
-for(int i=0;i<n;i++)
-for(int j=0;j<n;j++)
-matrix[i][j]=sc.nextInt();
-long mainDiagonalSumOfSquares=0;
-long antiDiagonalSumOfSquares=0;
-for(int i=0;i<n;i++){
-long mainVal=matrix[i][i];
-mainDiagonalSumOfSquares+=mainVal*mainVal;
-long antiVal=matrix[i][n-1-i];
-antiDiagonalSumOfSquares+=antiVal*antiVal;
-}
-System.out.println("Square of the first diagonal: "+mainDiagonalSumOfSquares);
-System.out.println("Square of the second diagonal: "+antiDiagonalSumOfSquares);
-}
+import java.util.Stack;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        if (!sc.hasNextInt()) return;
+        int n = sc.nextInt();
+        Stack<Integer> stack1 = new Stack<>();
+        for (int i = 0; i < n; i++) {
+            stack1.push(sc.nextInt());
+        }
+        int k = sc.nextInt();
+        Stack<Integer> stack2 = new Stack<>();
+        while (!stack1.isEmpty()) {
+            stack2.push(stack1.pop());
+        }
+        int count = 1;
+        while (!stack2.isEmpty()) {
+            int val = stack2.pop();
+            if (count != k) {
+                stack1.push(val);
+            }
+            count++;
+        }
+        if (stack1.isEmpty()) {
+            System.out.println("Stack is empty");
+        } else {
+            StringBuilder sb = new StringBuilder();
+            while (!stack1.isEmpty()) {
+                sb.append(stack1.pop()).append(" ");
+            }
+            System.out.println(sb.toString().trim());
+        }
+        sc.close();
+    }
 }
